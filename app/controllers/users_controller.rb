@@ -32,9 +32,9 @@ class UsersController < ApplicationController
 
   #take login params values and redirect user to tweets index
   post '/login' do
-    @user = User.find_by(:username => params[:username])
+    user = User.find_by(:username => params[:username])
     #@user will be true if its username is found in database (line 35)
-    if @user && @user.authenticate(params[:password]) #&& !logged_in?
+    if user && user.authenticate(params[:password]) #&& !logged_in?
       session[:user_id] = user.id
       #binding.pry
       redirect '/tweets'
